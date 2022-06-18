@@ -1,10 +1,14 @@
+import 'package:cooking_recipe_app/constants/constants.dart';
+import 'package:cooking_recipe_app/models/responsive_size.dart';
 import 'package:cooking_recipe_app/screens/home/recipes_varieties.dart';
 import 'package:cooking_recipe_app/screens/home/start_learning.dart';
 import 'package:cooking_recipe_app/screens/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class RecipeHomeNav extends StatefulWidget {
-  const RecipeHomeNav({Key? key}) : super(key: key);
+  const RecipeHomeNav({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<RecipeHomeNav> createState() => _RecipeHomeNavState();
@@ -21,10 +25,12 @@ class _RecipeHomeNavState extends State<RecipeHomeNav> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: Center(child: list[currentSelected]),
       bottomNavigationBar: NavigationBarTheme(
-        data: const NavigationBarThemeData(
+        data: NavigationBarThemeData(
+          height: getProportionalScreenHeigth(95),
           backgroundColor: Colors.transparent,
           indicatorColor: Colors.transparent,
         ),
@@ -35,40 +41,59 @@ class _RecipeHomeNavState extends State<RecipeHomeNav> {
             });
           },
           selectedIndex: currentSelected,
-          destinations: const [
+          destinations: [
             NavigationDestination(
               selectedIcon: Icon(
                 Icons.home,
+                color: black,
+                size: getProportionalScreenHeigth(45),
               ),
               icon: Icon(
-                Icons.home_outlined,
+                Icons.home,
+                color: iconGrey,
+                size: getProportionalScreenHeigth(45),
               ),
               label: "",
             ),
             NavigationDestination(
-                selectedIcon: Icon(
-                  Icons.collections_bookmark,
-                ),
-                icon: Icon(
-                  Icons.collections_bookmark_outlined,
-                ),
-                label: ""),
+              selectedIcon: Icon(
+                Icons.bookmark,
+                color: black,
+                size: getProportionalScreenHeigth(45),
+              ),
+              icon: Icon(
+                Icons.bookmark,
+                color: iconGrey,
+                size: getProportionalScreenHeigth(45),
+              ),
+              label: "",
+            ),
             NavigationDestination(
-                selectedIcon: Icon(
-                  Icons.favorite,
-                ),
-                icon: Icon(
-                  Icons.favorite_outline,
-                ),
-                label: ""),
+              selectedIcon: Icon(
+                Icons.favorite_outline,
+                color: black,
+                size: getProportionalScreenHeigth(45),
+              ),
+              icon: Icon(
+                Icons.favorite_outline,
+                color: iconGrey,
+                size: getProportionalScreenHeigth(45),
+              ),
+              label: "",
+            ),
             NavigationDestination(
-                selectedIcon: Icon(
-                  Icons.person,
-                ),
-                icon: Icon(
-                  Icons.person_outlined,
-                ),
-                label: "")
+              selectedIcon: Icon(
+                Icons.person,
+                color: black,
+                size: getProportionalScreenHeigth(45),
+              ),
+              icon: Icon(
+                Icons.person,
+                color: iconGrey,
+                size: getProportionalScreenHeigth(45),
+              ),
+              label: "",
+            ),
           ],
         ),
       ),

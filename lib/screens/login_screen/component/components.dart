@@ -70,37 +70,35 @@ class InputContainer extends StatelessWidget {
               icon,
               size: getProportionalScreenHeigth(30),
             ),
-            label: Text(label, style: inputLabelStyle),
+            label: Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Text(label, style: inputLabelStyle),
+            ),
             border: InputBorder.none),
       ),
     );
   }
 }
 
-Padding socialButton(text, function) {
-  return Padding(
-    padding: EdgeInsets.symmetric(
-        horizontal: getProportionalScreenHeigth(20),
-        vertical: getProportionalScreenHeigth(5)),
-    child: SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: function,
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(greenColor),
-          padding: MaterialStateProperty.all(
-              EdgeInsets.symmetric(vertical: getProportionalScreenHeigth(12))),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.circular(getProportionalScreenHeigth(30)),
-            ),
+SizedBox socialButton(text, function) {
+  return SizedBox(
+    width: double.infinity,
+    child: ElevatedButton(
+      onPressed: function,
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(greenColor),
+        padding: MaterialStateProperty.all(
+            EdgeInsets.symmetric(vertical: getProportionalScreenHeigth(12))),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius:
+                BorderRadius.circular(getProportionalScreenHeigth(30)),
           ),
         ),
-        child: Text(
-          text,
-          style: button1style,
-        ),
+      ),
+      child: Text(
+        text,
+        style: button1style,
       ),
     ),
   );

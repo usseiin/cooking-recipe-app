@@ -1,10 +1,14 @@
 import 'package:cooking_recipe_app/constants/constants.dart';
+import 'package:cooking_recipe_app/models/model.dart';
+import 'package:cooking_recipe_app/models/responsive_size.dart';
 import 'package:cooking_recipe_app/screens/home/components/components.dart';
 import 'package:cooking_recipe_app/screens/home/recipes_details.dart';
 import "package:flutter/material.dart";
 
 class RecipesVarieties extends StatefulWidget {
-  const RecipesVarieties({Key? key}) : super(key: key);
+  const RecipesVarieties({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<RecipesVarieties> createState() => _RecipesVarietiesState();
@@ -29,39 +33,49 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List list = [
-      {'text': "Homemade Pizza", 'image': "food.png"},
-      {'text': "Italian Salad", 'image': "food1.png"},
-      {'text': "French Toast", 'image': "food2.png"},
-      {'text': "Croissant", 'image': "food3.png"},
-      {'text': "American Pancake", 'image': "food31.png"},
-      {'text': "Lasagna", 'image': "food4.png"},
-    ];
+    ScrollController scrollcontroller = ScrollController();
     return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.only(top: 49, right: 42, left: 42),
+        padding: EdgeInsets.only(
+          top: getProportionalScreenHeigth(49),
+          right: getProportionalScreenWidth(42),
+          left: getProportionalScreenWidth(42),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
               child: GridView.builder(
+                  controller: scrollcontroller,
                   shrinkWrap: true,
-                  itemCount: list.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  itemCount: listOfProd.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 12,
+                    crossAxisSpacing: getProportionalScreenWidth(28),
                     childAspectRatio: 152 / 184,
-                    mainAxisSpacing: 12,
+                    mainAxisSpacing: getProportionalScreenHeigth(9),
                   ),
                   itemBuilder: (context, index) => ProdContainer(
-                        text: list[index]["text"],
-                        image: list[index]["image"],
+                        recipe: listOfProd[index],
                       )),
             ),
-            const SizedBox(
-              height: 50,
-              child: Icon(Icons.arrow_downward),
+            SizedBox(
+              height: getProportionalScreenHeigth(50),
+              width: double.infinity,
+              child: IconButton(
+                icon: Icon(
+                  Icons.keyboard_arrow_down,
+                  size: getProportionalScreenHeigth(50),
+                ),
+                onPressed: () {
+                  scrollcontroller.animateTo(
+                    getProportionalScreenHeigth(400),
+                    duration: const Duration(seconds: 1),
+                    curve: Curves.easeIn,
+                  );
+                },
+              ),
             )
           ],
         ),
@@ -71,19 +85,19 @@ class Body extends StatelessWidget {
 }
 
 class ProdContainer extends StatelessWidget {
+  final Food recipe;
   const ProdContainer({
     Key? key,
-    required this.image,
-    required this.text,
+    required this.recipe,
   }) : super(key: key);
-  final String image;
-  final String text;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const RecipesDetailScreen())),
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => RecipesDetailScreen(
+                recipe: recipe,
+              ))),
       child: Container(
         constraints: const BoxConstraints(maxHeight: 184, maxWidth: 152),
         decoration: BoxDecoration(
@@ -95,35 +109,43 @@ class ProdContainer extends StatelessWidget {
                 blurRadius: 2,
               )
             ]),
-        child: Stack(
-          children: [
-            Image.asset(
-              "assets/images/$image",
-              fit: BoxFit.cover,
-              width: double.maxFinite,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  padding: const EdgeInsets.only(left: 20),
-                  height: 52,
-                  width: double.maxFinite,
-                  decoration: const BoxDecoration(
-                    color: white,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(12),
-                      bottomRight: Radius.circular(20),
+        child: Hero(
+          tag: "${listOfProd.indexOf(recipe)}",
+          child: Stack(
+            children: [
+              Image.asset(
+                recipe.smallImage,
+                fit: BoxFit.cover,
+                width: double.maxFinite,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                      left: getProportionalScreenWidth(20),
+                    ),
+                    height: getProportionalScreenHeigth(52),
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(
+                      color: white,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft:
+                            Radius.circular(getProportionalScreenHeigth(12)),
+                        bottomRight:
+                            Radius.circular(getProportionalScreenHeigth(12)),
+                      ),
+                    ),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      recipe.name,
+                      style: prodCardTextStyle,
                     ),
                   ),
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    text,
-                  ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -31,7 +31,7 @@ class Body extends StatelessWidget {
             width: getProportionalScreenWidth(414),
             child: Image.asset(
               "assets/images/Hero Image.png",
-              fit: BoxFit.fill,
+              fit: BoxFit.fitHeight,
             ),
           ),
           Padding(

@@ -12,6 +12,8 @@ const Color inputLabelColor = Color.fromRGBO(11, 10, 10, 1);
 
 const Color white = Color.fromRGBO(255, 255, 255, 1);
 
+const Color iconGrey = Color.fromARGB(255, 133, 133, 133);
+
 SizedBox height(double val) => SizedBox(height: val);
 
 SizedBox width(double val) => SizedBox(width: val);
@@ -63,24 +65,41 @@ TextStyle detailText2style = GoogleFonts.poppins(
 
 TextStyle detailText3style = GoogleFonts.poppins(
     fontWeight: FontWeight.w400,
-    fontSize: 13,
+    fontSize: getProportionalScreenHeigth(13),
     color: const Color.fromRGBO(0, 0, 0, .8));
 
 TextStyle detailText4style = GoogleFonts.poppins(
   fontWeight: FontWeight.w600,
-  fontSize: 12,
+  fontSize: getProportionalScreenHeigth(12),
   color: const Color.fromRGBO(0, 0, 0, 1),
 );
 
 TextStyle detailText4style18 = GoogleFonts.poppins(
   fontWeight: FontWeight.w400,
-  fontSize: 18,
+  fontSize: getProportionalScreenHeigth(18),
   color: const Color.fromRGBO(0, 0, 0, 1),
+);
+
+TextStyle detailText5style = GoogleFonts.poppins(
+  fontWeight: FontWeight.w400,
+  fontSize: getProportionalScreenHeigth(14),
+  color: const Color.fromRGBO(0, 0, 0, 1),
+);
+TextStyle detailText5ustyle = GoogleFonts.poppins(
+  fontWeight: FontWeight.bold,
+  fontSize: getProportionalScreenHeigth(14),
+  color: const Color.fromRGBO(0, 0, 0, 1),
+);
+
+TextStyle detailText5gstyle = GoogleFonts.poppins(
+  fontWeight: FontWeight.w400,
+  fontSize: getProportionalScreenHeigth(14),
+  color: greenColor,
 );
 
 TextStyle detailText4style30 = GoogleFonts.poppins(
     fontWeight: FontWeight.w500,
-    fontSize: 30,
+    fontSize: getProportionalScreenHeigth(30),
     color: const Color.fromRGBO(0, 0, 0, 1));
 
 TextStyle dontHavAcc2style = GoogleFonts.poppins(

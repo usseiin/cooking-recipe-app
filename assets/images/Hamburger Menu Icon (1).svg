@@ -1,0 +1,23 @@
+<svg width="33" height="30" viewBox="0 0 33 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="33" height="30" fill="#E5E5E5"/>
+<g id="Home page" filter="url(#filter0_d_0_1)">
+<rect x="-39" y="-65" width="414" height="896" rx="25" fill="white"/>
+<rect id="Hamburger Menu Icon" width="33" height="30" fill="url(#pattern0)"/>
+</g>
+<defs>
+<filter id="filter0_d_0_1" x="-43" y="-65" width="422" height="904" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+</filter>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_0_1" transform="translate(0.0454545) scale(0.010101 0.0111111)"/>
+</pattern>
+<image id="image0_0_1" width="90" height="90" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAABmJLR0QA/wD/AP+gvaeTAAAAxElEQVR4nO3ZvU4CQQBG0SsdJr68Pwk1D6gWxBIt7IyrZAOzq5yTfA00yyyZ5hYAAAAAAAAAi7qtnqrX6t1+3Ev1WG3nHPRuBT/gr203dZg3E59vqkMz39AVe6vuquPXLzbjn+U6TR30sdqPfJB/Yt83/+bfbKuHPi/6pe++te+5us9VCwAAAAAwhzh7+sTZwRNnBxFnlybOnpc4e+GJswAAAAAA84mzp0+cHTxxdhBxdmni7HmJsxeeOAsAAAAAAACwBh+ELbp38dCngQAAAABJRU5ErkJggg=="/>
+</defs>
+</svg>

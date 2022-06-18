@@ -5,11 +5,14 @@ class ProfilePictureScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      "assets/images/Profile Picture.png",
-      width: double.infinity,
-      fit: BoxFit.fill,
-      height: double.infinity,
+    return Hero(
+      tag: "heroTag",
+      child: Image.asset(
+        "assets/images/Profile Picture.png",
+        width: double.infinity,
+        fit: BoxFit.fill,
+        height: double.infinity,
+      ),
     );
   }
 }
