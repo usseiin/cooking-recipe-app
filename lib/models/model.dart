@@ -1,6 +1,3 @@
-import 'package:cooking_recipe_app/utils/utils.dart';
-import 'package:flutter/material.dart';
-
 class Food {
   Food({
     required this.name,
@@ -24,10 +21,6 @@ class Food {
 
   void toggleFav() {
     fav = !fav;
-  }
-
-  List<TableRow> returnListTableRow() {
-    return CreateTable(ingredient, Colors.yellow).createTable();
   }
 }
 

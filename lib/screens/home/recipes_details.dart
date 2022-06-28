@@ -28,19 +28,25 @@ class RecipesDetailScreen extends StatelessWidget {
   }
 }
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({Key? key, required this.recipe}) : super(key: key);
   final Food recipe;
+
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Hero(
-          tag: "${listOfProd.indexOf(recipe)}",
+          tag: "${listOfProd.indexOf(widget.recipe)}",
           child: SizedBox(
             width: double.infinity,
             child: Image.asset(
-              recipe.largeImage,
+              widget.recipe.largeImage,
               height: getProportionalScreenHeigth(251),
               fit: BoxFit.cover,
             ),
@@ -58,18 +64,43 @@ class Body extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: getProportionalScreenWidth(5)),
+                  padding: EdgeInsets.only(left: getProportionalScreenWidth(0)),
                   child: Text(
                     "Ingredient",
                     style: detailText1style,
                   ),
                 ),
-                Table(
-                  children: recipe
-                      .returnListTableRow(), //createTable(listOfProd.ingredient, Colors.yellow),
+                GridView(
+                  shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: getProportionalScreenHeigth(10)),
+                  children: List.generate(
+                    widget.recipe.ingredient.length,
+                    (index) => Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: getProportionalScreenWidth(5)),
+                          child: const Icon(
+                            Icons.circle,
+                            size: 15,
+                            color: Colors.yellow,
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            widget.recipe.ingredient[index],
+                            style: detailText2style,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 height(getProportionalScreenHeigth(8)),
-                TableProp(recipe: recipe),
+                TableProp(recipe: widget.recipe),
                 Padding(
                   padding: EdgeInsets.symmetric(
                       vertical: getProportionalScreenHeigth(8)),
@@ -82,9 +113,9 @@ class Body extends StatelessWidget {
                   height: getProportionalScreenHeigth(186),
                   width: double.infinity,
                   child: ListView.builder(
-                    itemCount: recipe.preperationStep.length,
+                    itemCount: widget.recipe.preperationStep.length,
                     itemBuilder: (context, index) => Text(
-                      recipe.preperationStep[index],
+                      widget.recipe.preperationStep[index],
                       style: detailText2style,
                     ),
                   ),
