@@ -1,7 +1,13 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
+import 'dart:developer';
+
 import 'package:cooking_recipe_app/constants/constants.dart';
-import 'package:cooking_recipe_app/constants/route.dart';
 import 'package:cooking_recipe_app/models/responsive_size.dart';
 import 'package:cooking_recipe_app/screens/login_screen/component/components.dart';
+import 'package:cooking_recipe_app/screens/login_screen/signin.dart';
+import 'package:cooking_recipe_app/services/auth_services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -16,13 +22,37 @@ class SignUpScreen extends StatelessWidget {
   }
 }
 
-class Body extends StatelessWidget {
-  const Body({
-    Key? key,
-  }) : super(key: key);
+class Body extends StatefulWidget {
+  const Body({Key? key}) : super(key: key);
+
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  late final TextEditingController _email;
+  late final TextEditingController _username;
+  late final TextEditingController _password;
+
+  @override
+  void initState() {
+    super.initState();
+    _email = TextEditingController();
+    _username = TextEditingController();
+    _password = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _email.dispose();
+    _username.dispose();
+    _password.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final contxt = Navigator.of(context);
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -51,25 +81,68 @@ class Body extends StatelessWidget {
                     style: headText2style,
                   ),
                   height(getProportionalScreenHeigth(38)),
-                  const InputContainer(label: "Email", icon: Icons.email),
+                  InputContainer(
+                    keyboardType: TextInputType.emailAddress,
+                    label: "Email",
+                    icon: Icons.email,
+                    controller: _email,
+                  ),
                   height(getProportionalScreenHeigth(15)),
-                  const InputContainer(label: "Username", icon: Icons.person),
+                  InputContainer(
+                    keyboardType: TextInputType.text,
+                    label: "Username",
+                    icon: Icons.person,
+                    controller: _username,
+                  ),
                   height(getProportionalScreenHeigth(15)),
-                  const InputContainer(
+                  InputContainer(
+                    isObscure: true,
                     label: "Password",
                     icon: Icons.lock,
+                    controller: _password,
+                    keyboardType: TextInputType.text,
                   ),
                   height(getProportionalScreenHeigth(9)),
-                  forgetPassword(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Already have an account? ",
+                        style: dontHavAccStyle,
+                      ),
+                      GestureDetector(
+                        onTap: () => Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (context) => const SignInScreen()),
+                        ),
+                        child: Text(
+                          "Sign in",
+                          style: dontHavAcc2style,
+                        ),
+                      ),
+                    ],
+                  ),
+                  height(getProportionalScreenHeigth(9)),
+                  forgetPassword(context),
                   height(getProportionalScreenHeigth(32)),
                   AuthButton(
                     text: "Signup",
-                    function: () =>
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                      navRoute,
-                      (route) => false,
-                    ), //goes to the main screen or verification screen
-                  )
+                    function: () async {
+                      final email = _email.text;
+                      final password = _password.text;
+                      try {
+                        await AuthService().createAccountWithEmailAndPassword(
+                          email: email,
+                          password: password,
+                        );
+                      } on FirebaseAuthException catch (e) {
+                        log(e.code);
+                      } catch (e) {
+                        log(e.toString());
+                      }
+                    },
+                    //goes to the main screen or verification screen
+                  ),
                 ],
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:cooking_recipe_app/constants/constants.dart';
+import 'package:cooking_recipe_app/main.dart';
 import 'package:cooking_recipe_app/models/responsive_size.dart';
 import 'package:flutter/material.dart';
 
@@ -31,27 +32,46 @@ class AuthButton extends StatelessWidget {
   }
 }
 
-Align forgetPassword() {
+Align forgetPassword(BuildContext context) {
   return Align(
     alignment: Alignment.centerRight,
-    child: Padding(
-      padding: EdgeInsets.only(right: getProportionalScreenHeigth(8.0)),
-      child: Text(
-        "Forget password",
-        style: dontHavAcc2style,
-        textAlign: TextAlign.end,
+    child: GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const ForgetPassword(),
+          ),
+        );
+      },
+      child: Padding(
+        padding: EdgeInsets.only(right: getProportionalScreenHeigth(8.0)),
+        child: Text(
+          "Forget password",
+          style: dontHavAcc2style,
+          textAlign: TextAlign.end,
+        ),
       ),
     ),
   );
 }
 
 class InputContainer extends StatelessWidget {
-  const InputContainer(
-      {super.key, required this.label, required this.icon, this.suffixIcon});
+  const InputContainer({
+    super.key,
+    required this.label,
+    required this.icon,
+    this.suffixIcon,
+    required this.controller,
+    required this.keyboardType,
+    this.isObscure,
+  });
 
   final String label;
   final IconData icon;
   final dynamic suffixIcon;
+  final TextEditingController controller;
+  final TextInputType keyboardType;
+  final bool? isObscure;
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +82,11 @@ class InputContainer extends StatelessWidget {
           shape: BoxShape.rectangle,
           color: const Color.fromARGB(255, 211, 211, 211)),
       child: TextFormField(
+        obscureText: isObscure ?? false,
+        controller: controller,
+        autofocus: true,
+        autocorrect: false,
+        keyboardType: keyboardType,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
                 vertical: getProportionalScreenHeigth(15.5),
@@ -70,10 +95,7 @@ class InputContainer extends StatelessWidget {
               icon,
               size: getProportionalScreenHeigth(30),
             ),
-            label: Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Text(label, style: inputLabelStyle),
-            ),
+            hintText: label,
             border: InputBorder.none),
       ),
     );
@@ -91,8 +113,9 @@ SizedBox socialButton(text, function) {
             EdgeInsets.symmetric(vertical: getProportionalScreenHeigth(12))),
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(getProportionalScreenHeigth(30)),
+            borderRadius: BorderRadius.circular(
+              getProportionalScreenHeigth(30),
+            ),
           ),
         ),
       ),

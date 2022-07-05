@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "24409611409",
+    "project_id": "boy-recipe-app",
+    "storage_bucket": "boy-recipe-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24409611409:android:0d8e8bab07f520c4e3f330",
+        "android_client_info": {
+          "package_name": "com.example.cooking_recipe_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24409611409-t6lggl96493vkob8obi55gd0eq73m9l8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM368N39r7BdvV1KbTixA_BGlKD0g32Ws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24409611409-t6lggl96493vkob8obi55gd0eq73m9l8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

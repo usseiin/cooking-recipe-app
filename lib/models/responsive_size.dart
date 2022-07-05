@@ -16,11 +16,17 @@ class SizeConfig {
 }
 
 double getProportionalScreenWidth(double inputWidth) {
-  double screenWidth = SizeConfig.screenWidth!;
-  return (inputWidth * screenWidth) / 414;
+  double? screenWidth = SizeConfig.screenWidth;
+  if (screenWidth != null) {
+    return (inputWidth * screenWidth) / 414;
+  }
+  return inputWidth;
 }
 
 double getProportionalScreenHeigth(double inputHeight) {
-  double screenHeight = SizeConfig.screenHeight!;
-  return (inputHeight * screenHeight) / 896;
+  double? screenHeight = SizeConfig.screenHeight;
+  if (screenHeight != null) {
+    return (inputHeight * screenHeight) / 896;
+  }
+  return inputHeight;
 }
