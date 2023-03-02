@@ -3,6 +3,7 @@
 import 'dart:developer';
 
 import 'package:cooking_recipe_app/constants/constants.dart';
+import 'package:cooking_recipe_app/constants/route.dart';
 import 'package:cooking_recipe_app/models/responsive_size.dart';
 import 'package:cooking_recipe_app/screens/login_screen/component/components.dart';
 import 'package:cooking_recipe_app/screens/login_screen/signup.dart';
@@ -130,6 +131,11 @@ class _BodyState extends State<Body> {
                       );
                       log("${AuthService().currentUser()}");
                       log(user?.toString() ?? "not user");
+                      if (user != null) {
+                        if (mounted) {
+                          Navigator.of(context).pushNamed(startLearningRoute);
+                        }
+                      }
                     },
                   ),
                 ],

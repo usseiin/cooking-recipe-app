@@ -40,8 +40,12 @@ dependencies:
   font_awesome_flutter: ^10.1.0
   google_fonts: ^2.3.2
   flutter_svg: ^1.1.0
+  flutter_bloc: ^8.1.2
+  bar_chart:
+    path: packages/bar_chart
 
-
+dependency_overrides:
+  firebase_core_platform_interface: 4.5.1
 
 dev_dependencies:
   flutter_test:

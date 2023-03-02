@@ -10,8 +10,9 @@ class AuthEventSignIn extends AuthEvent {
 
 class AuthEventSignUp extends AuthEvent {
   final String email;
+  final String username;
   final String password;
-  const AuthEventSignUp(this.email, this.password);
+  const AuthEventSignUp(this.email, this.username, this.password);
 }
 
 class AuthEventSignInWithGoogle extends AuthEvent {

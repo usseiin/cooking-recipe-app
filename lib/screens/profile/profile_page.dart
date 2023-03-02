@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:bar_chart/bar_chart.dart';
 import 'package:cooking_recipe_app/constants/constants.dart';
 import 'package:cooking_recipe_app/constants/route.dart';
 import 'package:cooking_recipe_app/models/responsive_size.dart';
@@ -10,6 +13,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final values = List.generate(30, (index) => Random().nextDouble() * 100);
     SizeConfig().init(context);
     return Scaffold(
       appBar: buildAppBar(
@@ -38,37 +42,42 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          height(getProportionalScreenHeigth(11)),
+          height(getProportionalScreenHeigth(6)),
           Text(
             "You are doing great",
             style: detailText4style30,
           ),
-          height(getProportionalScreenHeigth(11)),
+          height(getProportionalScreenHeigth(6)),
           Text(
             "You have learnt 35 fatastic recipes in the last 30 days compared to previousmonth Rose.",
             style: detailText4style18,
             textAlign: TextAlign.center,
           ),
-          height(getProportionalScreenHeigth(32)),
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: getProportionalScreenHeigth(15)),
-            child: Image.asset(
-              "assets/images/Bar Chart.png",
-              height: getProportionalScreenHeigth(164),
+          // height(getProportionalScreenHeigth(32)),
+          Container(
               width: double.infinity,
-              fit: BoxFit.fitWidth,
-            ),
-          ),
-          height(getProportionalScreenHeigth(14)),
+              height: 150,
+              margin: EdgeInsets.symmetric(
+                  horizontal: getProportionalScreenHeigth(15)),
+              child: CustomPaint(
+                painter: BarChart(values: values),
+              )
+              // Image.asset(
+              //   "assets/images/Bar Chart.png",
+              //   height: getProportionalScreenHeigth(164),
+              //   width: double.infinity,
+              //   fit: BoxFit.fitWidth,
+              // ),
+              ),
+          // height(getProportionalScreenHeigth(8)),
           Divider(
             thickness: getProportionalScreenHeigth(2),
           ),
-          height(getProportionalScreenHeigth(21)),
+          height(getProportionalScreenHeigth(16)),
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: getProportionalScreenWidth(28),
-              vertical: getProportionalScreenHeigth(15),
+              vertical: getProportionalScreenHeigth(10),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

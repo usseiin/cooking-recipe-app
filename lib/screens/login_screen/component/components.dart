@@ -1,7 +1,8 @@
 import 'package:cooking_recipe_app/constants/constants.dart';
-import 'package:cooking_recipe_app/main.dart';
 import 'package:cooking_recipe_app/models/responsive_size.dart';
 import 'package:flutter/material.dart';
+
+import '../../forget_password.dart';
 
 class AuthButton extends StatelessWidget {
   const AuthButton({
@@ -76,7 +77,7 @@ class InputContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: getProportionalScreenWidth(22)),
+      padding: EdgeInsets.symmetric(horizontal: getProportionalScreenWidth(12)),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(getProportionalScreenHeigth(30)),
           shape: BoxShape.rectangle,
@@ -90,7 +91,7 @@ class InputContainer extends StatelessWidget {
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
                 vertical: getProportionalScreenHeigth(15.5),
-                horizontal: getProportionalScreenWidth(22)),
+                horizontal: getProportionalScreenWidth(4)),
             prefixIcon: Icon(
               icon,
               size: getProportionalScreenHeigth(30),

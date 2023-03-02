@@ -52,7 +52,7 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    final contxt = Navigator.of(context);
+    // final contxt = Navigator.of(context);
     return SingleChildScrollView(
       child: Column(
         children: [
