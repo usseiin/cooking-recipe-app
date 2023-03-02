@@ -43,6 +43,10 @@ dependencies:
   flutter_bloc: ^8.1.2
   bar_chart:
     path: packages/bar_chart
+    # git:
+    #   url: https://github.com/usseiin/bar_chart.git
+    #   ref: main
+
 
 dependency_overrides:
   firebase_core_platform_interface: 4.5.1

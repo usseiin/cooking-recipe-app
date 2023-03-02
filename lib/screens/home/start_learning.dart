@@ -1,12 +1,14 @@
 import 'package:cooking_recipe_app/constants/constants.dart';
-import 'package:cooking_recipe_app/constants/route.dart';
 import 'package:cooking_recipe_app/models/responsive_size.dart';
 import 'package:cooking_recipe_app/screens/home/components/components.dart';
+import 'package:cooking_recipe_app/screens/home/home_nav.dart';
 import 'package:cooking_recipe_app/screens/login_screen/component/components.dart';
 import "package:flutter/material.dart";
 
 class StartLearning extends StatelessWidget {
   const StartLearning({Key? key}) : super(key: key);
+
+  static const String route = "/start_learning";
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class Body extends StatelessWidget {
             EdgeInsets.symmetric(horizontal: getProportionalScreenWidth(62)),
         child: socialButton("Start learning", () {
           Navigator.of(context).pushNamedAndRemoveUntil(
-            recipeHomeRoute,
+            RecipeHomeNav.route,
             (route) => false,
           );
         }),

@@ -2,14 +2,16 @@ import 'dart:math';
 
 import 'package:bar_chart/bar_chart.dart';
 import 'package:cooking_recipe_app/constants/constants.dart';
-import 'package:cooking_recipe_app/constants/route.dart';
 import 'package:cooking_recipe_app/models/responsive_size.dart';
 import 'package:cooking_recipe_app/screens/home/components/components.dart';
 import 'package:cooking_recipe_app/screens/login_screen/component/components.dart';
+import 'package:cooking_recipe_app/screens/profile/profile_picture.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
+
+  static const String route = "/profile_page";
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(
         iconlast2: GestureDetector(
-          onTap: () => Navigator.of(context).pushNamed(profilePicRoute),
+          onTap: () => Navigator.of(context).pushNamed(ProfilePage.route),
           child: Padding(
             padding: EdgeInsets.all(getProportionalScreenHeigth(15)),
             child: Hero(
@@ -37,7 +39,7 @@ class ProfilePage extends StatelessWidget {
         text: "Diana Rose",
         favColor: const Color.fromARGB(131, 255, 255, 255),
         actPress: () => Navigator.of(context).pushNamed(
-          profilePicRoute,
+          ProfilePictureScreen.route,
         ),
       ),
       body: Column(
@@ -60,16 +62,8 @@ class ProfilePage extends StatelessWidget {
               margin: EdgeInsets.symmetric(
                   horizontal: getProportionalScreenHeigth(15)),
               child: CustomPaint(
-                painter: BarChart(values: values),
-              )
-              // Image.asset(
-              //   "assets/images/Bar Chart.png",
-              //   height: getProportionalScreenHeigth(164),
-              //   width: double.infinity,
-              //   fit: BoxFit.fitWidth,
-              // ),
-              ),
-          // height(getProportionalScreenHeigth(8)),
+                painter: BarChart(values: values, maxValue: 100),
+              )),
           Divider(
             thickness: getProportionalScreenHeigth(2),
           ),

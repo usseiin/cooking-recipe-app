@@ -10,6 +10,8 @@ class RecipeHomeNav extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
+  static const String route = "/recipe_home_nav";
+
   @override
   State<RecipeHomeNav> createState() => _RecipeHomeNavState();
 }

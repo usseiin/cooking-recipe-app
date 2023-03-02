@@ -1,12 +1,14 @@
 import 'package:cooking_recipe_app/constants/constants.dart';
-import 'package:cooking_recipe_app/constants/route.dart';
 import 'package:cooking_recipe_app/models/responsive_size.dart';
 import 'package:cooking_recipe_app/screens/login_screen/component/components.dart';
+import 'package:cooking_recipe_app/screens/login_screen/signin.dart';
 import 'package:cooking_recipe_app/screens/login_screen/signup.dart';
 import 'package:flutter/material.dart';
 
 class LoginSocial extends StatelessWidget {
   const LoginSocial({Key? key}) : super(key: key);
+
+  static const String route = "/login_screen";
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class LoginSocial extends StatelessWidget {
                   socialButton(
                     "Login with Email",
                     () => Navigator.pushNamedAndRemoveUntil(
-                        context, signInRoute, (route) => false),
+                        context, SignInScreen.route, (route) => false),
                   ),
                   height(getProportionalScreenHeigth(22)),
                   Row(

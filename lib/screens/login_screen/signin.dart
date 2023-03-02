@@ -3,8 +3,8 @@
 import 'dart:developer';
 
 import 'package:cooking_recipe_app/constants/constants.dart';
-import 'package:cooking_recipe_app/constants/route.dart';
 import 'package:cooking_recipe_app/models/responsive_size.dart';
+import 'package:cooking_recipe_app/screens/home/start_learning.dart';
 import 'package:cooking_recipe_app/screens/login_screen/component/components.dart';
 import 'package:cooking_recipe_app/screens/login_screen/signup.dart';
 import 'package:cooking_recipe_app/services/auth_services.dart';
@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
+
+  static const String route = "/sign_in_page";
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +135,7 @@ class _BodyState extends State<Body> {
                       log(user?.toString() ?? "not user");
                       if (user != null) {
                         if (mounted) {
-                          Navigator.of(context).pushNamed(startLearningRoute);
+                          Navigator.of(context).pushNamed(StartLearning.route);
                         }
                       }
                     },
