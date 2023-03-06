@@ -1,5 +1,5 @@
 import 'package:cooking_recipe_app/constants/constants.dart';
-import 'package:cooking_recipe_app/models/responsive_size.dart';
+import 'package:cooking_recipe_app/utils/responsive_size.dart';
 import 'package:flutter/material.dart';
 
 import '../../forget_password.dart';
@@ -20,12 +20,17 @@ class AuthButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(greenColor),
-            padding: MaterialStateProperty.all(EdgeInsets.symmetric(
-                vertical: getProportionalScreenHeigth(10))),
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(getProportionalScreenHeigth(30))))),
+          backgroundColor: MaterialStateProperty.all(greenColor),
+          padding: MaterialStateProperty.all(
+            EdgeInsets.symmetric(vertical: getProportionalScreenHeigth(10)),
+          ),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius:
+                  BorderRadius.circular(getProportionalScreenHeigth(30)),
+            ),
+          ),
+        ),
         onPressed: function,
         child: Text(text, style: button1style),
       ),

@@ -1,6 +1,8 @@
+import 'package:cooking_recipe_app/models/model.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/home/home_nav.dart';
+import 'screens/home/recipes_details.dart';
 import 'screens/home/start_learning.dart';
 import 'screens/login_screen/signin.dart';
 import 'screens/login_social.dart';
@@ -33,13 +35,36 @@ Route generate(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const SignInScreen(),
       );
+    case RecipesDetailScreen.route:
+      final recipe = settings.arguments as Food;
+      return MaterialPageRoute(
+        builder: (context) => RecipesDetailScreen(recipe: recipe),
+      );
 
     default:
       return MaterialPageRoute(
-        builder: (_) {
-          return const MaterialApp(
+        builder: (context) {
+          return MaterialApp(
             home: Scaffold(
-              body: Text("Page doesn't exit"),
+              body: SafeArea(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Page doesn't exit"),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, RecipeHomeNav.route);
+                        },
+                        child: const Text("Go to Home"),
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ),
           );
         },

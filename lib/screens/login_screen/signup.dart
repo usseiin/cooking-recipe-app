@@ -1,14 +1,14 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
-import 'dart:developer';
-
 import 'package:cooking_recipe_app/constants/constants.dart';
-import 'package:cooking_recipe_app/models/responsive_size.dart';
-import 'package:cooking_recipe_app/screens/login_screen/component/components.dart';
-import 'package:cooking_recipe_app/screens/login_screen/signin.dart';
+import 'package:cooking_recipe_app/screens/home/home_nav.dart';
+import 'package:cooking_recipe_app/utils/responsive_size.dart';
 import 'package:cooking_recipe_app/services/auth_services.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../../utils/logic.dart';
+import 'component/components.dart';
+import 'signin.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -52,7 +52,6 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    // final contxt = Navigator.of(context);
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -130,18 +129,18 @@ class _BodyState extends State<Body> {
                     function: () async {
                       final email = _email.text;
                       final password = _password.text;
-                      try {
-                        await AuthService().createAccountWithEmailAndPassword(
-                          email: email,
-                          password: password,
-                        );
-                      } on FirebaseAuthException catch (e) {
-                        log(e.code);
-                      } catch (e) {
-                        log(e.toString());
+                      final username = _username.text;
+                      final user = await AuthService()
+                          .createAccountWithEmailAndPassword(
+                              email: email,
+                              password: password,
+                              username: username);
+                      if (user.userId.isNotEmpty) {
+                        if (mounted) {
+                          Navigator.pushNamed(context, RecipeHomeNav.route);
+                        }
                       }
                     },
-                    //goes to the main screen or verification screen
                   ),
                 ],
               ),

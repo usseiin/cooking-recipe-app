@@ -1,9 +1,9 @@
-import 'package:cooking_recipe_app/constants/constants.dart';
-import 'package:cooking_recipe_app/models/responsive_size.dart';
+import 'package:cooking_recipe_app/utils/responsive_size.dart';
 import 'package:cooking_recipe_app/screens/home/components/components.dart';
-import 'package:cooking_recipe_app/screens/home/home_nav.dart';
-import 'package:cooking_recipe_app/screens/login_screen/component/components.dart';
 import "package:flutter/material.dart";
+
+import '../../utils/logic.dart';
+import '../login_screen/component/components.dart';
 
 class StartLearning extends StatelessWidget {
   const StartLearning({Key? key}) : super(key: key);
@@ -28,25 +28,27 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      SizedBox(
-          height: getProportionalScreenHeigth(350),
-          width: getProportionalScreenWidth(414),
-          child: Image.asset(
-            "assets/images/Hero Image (1).png",
-            fit: BoxFit.fitHeight,
-          )),
-      height(getProportionalScreenHeigth(163)),
-      Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: getProportionalScreenWidth(62)),
-        child: socialButton("Start learning", () {
-          Navigator.of(context).pushNamedAndRemoveUntil(
-            RecipeHomeNav.route,
-            (route) => false,
-          );
-        }),
-      )
-    ]);
+    return Column(
+      children: [
+        SizedBox(
+            height: getProportionalScreenHeigth(350),
+            width: getProportionalScreenWidth(414),
+            child: Image.asset(
+              "assets/images/Hero Image (1).png",
+              fit: BoxFit.fitHeight,
+            )),
+        height(getProportionalScreenHeigth(163)),
+        Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: getProportionalScreenWidth(62)),
+          child: socialButton(
+            "Start learning",
+            () {
+              Navigator.pushNamed(context, "routeName");
+            },
+          ),
+        )
+      ],
+    );
   }
 }

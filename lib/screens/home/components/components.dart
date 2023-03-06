@@ -1,6 +1,6 @@
 import 'package:cooking_recipe_app/constants/constants.dart';
 import 'package:cooking_recipe_app/models/model.dart';
-import 'package:cooking_recipe_app/models/responsive_size.dart';
+import 'package:cooking_recipe_app/utils/responsive_size.dart';
 import 'package:flutter/material.dart';
 
 AppBar buildAppBar(
@@ -74,8 +74,9 @@ class TableProp extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                      top: getProportionalScreenHeigth(5),
-                      right: getProportionalScreenWidth(5)),
+                    top: getProportionalScreenHeigth(5),
+                    right: getProportionalScreenWidth(5),
+                  ),
                   child: const Icon(
                     Icons.circle,
                     size: 15,
@@ -95,8 +96,9 @@ class TableProp extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                      top: getProportionalScreenHeigth(5),
-                      right: getProportionalScreenWidth(5)),
+                    top: getProportionalScreenHeigth(5),
+                    right: getProportionalScreenWidth(5),
+                  ),
                   child: const Icon(
                     Icons.circle,
                     size: 15,
@@ -120,8 +122,9 @@ class TableProp extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                      top: getProportionalScreenHeigth(5),
-                      right: getProportionalScreenWidth(5)),
+                    top: getProportionalScreenHeigth(5),
+                    right: getProportionalScreenWidth(5),
+                  ),
                   child: const Icon(
                     Icons.circle,
                     size: 15,
@@ -141,8 +144,9 @@ class TableProp extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                      top: getProportionalScreenHeigth(5),
-                      right: getProportionalScreenWidth(5)),
+                    top: getProportionalScreenHeigth(5),
+                    right: getProportionalScreenWidth(5),
+                  ),
                   child: const Icon(
                     Icons.circle,
                     size: 15,

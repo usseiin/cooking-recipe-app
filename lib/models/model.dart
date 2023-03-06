@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class Food {
   Food({
     required this.name,
@@ -11,65 +12,83 @@ class Food {
     required this.ingredient,
     required this.preperationStep,
     required this.toServe,
+    this.fav = false,
   });
 
-  final String name, smallImage, largeImage, description;
-  final double calories, prepTime, cookTime;
-  final List<String> ingredient, preperationStep, toServe;
+  final String name;
+  final String smallImage;
+  final String largeImage;
+  final String description;
+  final double calories;
+  final double prepTime;
+  final double cookTime;
+  final List<String> ingredient;
+  final List<String> preperationStep;
+  final List<String> toServe;
   final int servings;
-  bool fav = false;
+  bool fav;
 
-  void toggleFav() {
-    fav = !fav;
+  Food copyWith({
+    String? name,
+    String? smallImage,
+    String? largeImage,
+    String? description,
+    double? calories,
+    double? prepTime,
+    double? cookTime,
+    List<String>? ingredient,
+    List<String>? preperationStep,
+    List<String>? toServe,
+    int? servings,
+    bool? fav,
+  }) {
+    return Food(
+        name: name ?? this.name,
+        smallImage: smallImage ?? this.smallImage,
+        largeImage: largeImage ?? this.largeImage,
+        description: description ?? this.description,
+        calories: calories ?? this.calories,
+        prepTime: prepTime ?? this.prepTime,
+        cookTime: cookTime ?? this.cookTime,
+        ingredient: ingredient ?? this.ingredient,
+        preperationStep: preperationStep ?? this.preperationStep,
+        toServe: toServe ?? this.toServe,
+        servings: servings ?? this.servings,
+        fav: fav ?? this.fav);
   }
 }
 
-class User {
-  User(
-    this.fullname,
-    this.username,
-    this.password,
-    this.bodyWeight,
-    this.height,
-  );
-
-  final String fullname, username, password;
-  final double recipesLearnt = 0, bodyWeight, height;
-}
-
-List listOfUser = [User("Diana Rose", "Rose", "password", 63, 1.7)];
-
-List listOfProd = [
+List<Food> foods = [
   Food(
-    name: "Homemade Pizza",
-    smallImage: "assets/images/food.png",
-    largeImage: "assets/images/pizza.png",
-    description: "description",
-    calories: 744,
-    servings: 4,
-    prepTime: 10,
-    cookTime: 10,
-    ingredient: [
-      "2 cups of all purpose flour",
-      "100 m processed cheese",
-      "100 ml tomatoes ketchup",
-      "4 mushroom",
-      "1 tomato",
-      "1/2 capsium (green pepper)",
-      "2 onions",
-      "1 teaspoo oregano",
-      "iteaspoon of chilli flakes",
-      "1/2 cup of mozzarella",
-      "i teaspoon bakig powder",
-      'i table spoon of dry yeast',
-      'i teaspoon sugar',
-      "water as required",
-    ],
-    preperationStep: [
-      "Step 1 : Prepare the pizza dough. Take a dough kneading plate and add all-purpose flour to it. Next, add salt and baking powder in it and sieve the flour once. Then, make a well in the centre and add 1 teaspoon of oil to it. On the other hand, take a little warm water and mix the yeast in it along with 1 teaspoon of sugar. Mix well for 10mins. The yeast will rise in the meantime. Once the yeast has risen, add it to the flour knead the dough nicely using some water. Keep this dough aside for 4-6 hours. Then knead the dough once again. Now, the pizza dough is ready. Read more"
-    ],
-    toServe: [],
-  ),
+      name: "Homemade Pizza",
+      smallImage: "assets/images/food.png",
+      largeImage: "assets/images/pizza.png",
+      description: "description",
+      calories: 744,
+      servings: 4,
+      prepTime: 10,
+      cookTime: 10,
+      ingredient: [
+        "2 cups of all purpose flour",
+        "100 m processed cheese",
+        "100 ml tomatoes ketchup",
+        "4 mushroom",
+        "1 tomato",
+        "1/2 capsium (green pepper)",
+        "2 onions",
+        "1 teaspoo oregano",
+        "iteaspoon of chilli flakes",
+        "1/2 cup of mozzarella",
+        "i teaspoon bakig powder",
+        'i table spoon of dry yeast',
+        'i teaspoon sugar',
+        "water as required",
+      ],
+      preperationStep: [
+        "Step 1 : Prepare the pizza dough. Take a dough kneading plate and add all-purpose flour to it. Next, add salt and baking powder in it and sieve the flour once. Then, make a well in the centre and add 1 teaspoon of oil to it. On the other hand, take a little warm water and mix the yeast in it along with 1 teaspoon of sugar. Mix well for 10mins. The yeast will rise in the meantime. Once the yeast has risen, add it to the flour knead the dough nicely using some water. Keep this dough aside for 4-6 hours. Then knead the dough once again. Now, the pizza dough is ready. Read more"
+      ],
+      toServe: [],
+      fav: true),
   Food(
     name: "Italia Salad",
     smallImage: "assets/images/food1.png",
@@ -123,35 +142,35 @@ List listOfProd = [
     ],
   ),
   Food(
-    name: "Croissant",
-    smallImage: "assets/images/food3.png",
-    largeImage: "assets/images/pizza.png",
-    description: "description",
-    calories: 744,
-    servings: 4,
-    prepTime: 10,
-    cookTime: 10,
-    ingredient: [
-      "2 cups of all purpose flour",
-      "100 m processed cheese",
-      "100 ml tomatoes ketchup",
-      "4 mushroom",
-      "1 tomato",
-      "1/2 capsium (green pepper)",
-      "2 onions",
-      "1 teaspoo oregano",
-      "iteaspoon of chilli flakes",
-      "1/2 cup of mozzarella",
-      "i teaspoon bakig powder",
-      'i table spoon of dry yeast',
-      'i teaspoon sugar',
-      "water as required",
-    ],
-    preperationStep: [
-      "Step 1 : Prepare the pizza dough. Take a dough kneading plate and add all-purpose flour to it. Next, add salt and baking powder in it and sieve the flour once. Then, make a well in the centre and add 1 teaspoon of oil to it. On the other hand, take a little warm water and mix the yeast in it along with 1 teaspoon of sugar. Mix well for 10mins. The yeast will rise in the meantime. Once the yeast has risen, add it to the flour knead the dough nicely using some water. Keep this dough aside for 4-6 hours. Then knead the dough once again. Now, the pizza dough is ready. Read more"
-    ],
-    toServe: [],
-  ),
+      name: "Croissant",
+      smallImage: "assets/images/food3.png",
+      largeImage: "assets/images/pizza.png",
+      description: "description",
+      calories: 744,
+      servings: 4,
+      prepTime: 10,
+      cookTime: 10,
+      ingredient: [
+        "2 cups of all purpose flour",
+        "100 m processed cheese",
+        "100 ml tomatoes ketchup",
+        "4 mushroom",
+        "1 tomato",
+        "1/2 capsium (green pepper)",
+        "2 onions",
+        "1 teaspoo oregano",
+        "iteaspoon of chilli flakes",
+        "1/2 cup of mozzarella",
+        "i teaspoon bakig powder",
+        'i table spoon of dry yeast',
+        'i teaspoon sugar',
+        "water as required",
+      ],
+      preperationStep: [
+        "Step 1 : Prepare the pizza dough. Take a dough kneading plate and add all-purpose flour to it. Next, add salt and baking powder in it and sieve the flour once. Then, make a well in the centre and add 1 teaspoon of oil to it. On the other hand, take a little warm water and mix the yeast in it along with 1 teaspoon of sugar. Mix well for 10mins. The yeast will rise in the meantime. Once the yeast has risen, add it to the flour knead the dough nicely using some water. Keep this dough aside for 4-6 hours. Then knead the dough once again. Now, the pizza dough is ready. Read more"
+      ],
+      toServe: [],
+      fav: true),
   Food(
     name: "America Pancake",
     smallImage: "assets/images/food31.png",
@@ -205,7 +224,171 @@ List listOfProd = [
     toServe: [],
   ),
   Food(
-    name: "Homemade Pizza",
+      name: "Homemade Pizza2",
+      smallImage: "assets/images/food.png",
+      largeImage: "assets/images/pizza.png",
+      description: "description",
+      calories: 744,
+      servings: 4,
+      prepTime: 10,
+      cookTime: 10,
+      ingredient: [
+        "2 cups of all purpose flour",
+        "100 m processed cheese",
+        "100 ml tomatoes ketchup",
+        "4 mushroom",
+        "1 tomato",
+        "1/2 capsium (green pepper)",
+        "2 onions",
+        "1 teaspoo oregano",
+        "iteaspoon of chilli flakes",
+        "1/2 cup of mozzarella",
+        "i teaspoon bakig powder",
+        'i table spoon of dry yeast',
+        'i teaspoon sugar',
+        "water as required",
+      ],
+      preperationStep: [
+        "Step 1 : Prepare the pizza dough. Take a dough kneading plate and add all-purpose flour to it. Next, add salt and baking powder in it and sieve the flour once. Then, make a well in the centre and add 1 teaspoon of oil to it. On the other hand, take a little warm water and mix the yeast in it along with 1 teaspoon of sugar. Mix well for 10mins. The yeast will rise in the meantime. Once the yeast has risen, add it to the flour knead the dough nicely using some water. Keep this dough aside for 4-6 hours. Then knead the dough once again. Now, the pizza dough is ready. Read more"
+      ],
+      toServe: [],
+      fav: true),
+  Food(
+    name: "Italia Salad2",
+    smallImage: "assets/images/food1.png",
+    largeImage: "assets/images/Italian Salad Image.png",
+    description: "description",
+    calories: 744,
+    servings: 4,
+    prepTime: 10,
+    cookTime: 10,
+    ingredient: [
+      "5 ounces mixed spring greens (or whatever greens you prefer)",
+      "half a small red onion, peeled and thinly sliced",
+      "2 cups cherry tomatoes",
+      "2 cups croutons, homemade or store-bought",
+      "1/2 cup freshly-grated Parmesan cheese, plus extra for topping",
+      "1/3 cup sliced pepperoncini peppers",
+    ],
+    preperationStep: [
+      "To Make The Vinaigrette: Whisk all ingredients together in a bowl (or shake together in a mason jar) until combined.  Taste and add additional sweetener if desired.  Use immediately or refrigerate in a sealed container for up to 3 days.",
+      "To Make The Salad: Combine all ingredients in a large salad bowl, drizzle evenly with the vinaigrette, and toss until evenly combined.  Serve sprinkled with extra Parmesan cheese and enjoy!"
+    ],
+    toServe: [],
+  ),
+  Food(
+    name: "Fresh toast2",
+    smallImage: "assets/images/food2.png",
+    largeImage: "assets/images/pizza.png",
+    description: "description",
+    calories: 744,
+    servings: 4,
+    prepTime: 10,
+    cookTime: 10,
+    ingredient: [
+      "200g self-raising flour",
+      "25g melted butter, plus extra for cooking.",
+      "1 ½ tsp baking powder",
+      "200ml milk",
+      "1 tbsp golden caster sugar",
+      "vegetable oil, for cooking",
+      "3 large eggs",
+    ],
+    preperationStep: [
+      "STEP 1 : Mix 200g self-raising flour, 1 ½ tsp baking powder, 1 tbsp golden caster sugar and a pinch of salt together in a large bowl.",
+      "STEP 2 : Create a well in the centre with the back of your spoon then add 3 large eggs, 25g melted butter and 200ml milk.",
+      "STEP 3 : Whisk together either with a balloon whisk or electric hand beaters until smooth then pour into a jug. ",
+    ],
+    toServe: [
+      "maple syrup",
+      "toppings of your choice, such as cooked bacon",
+      "chocolate chips, blueberries or peanut butter and jam.",
+    ],
+  ),
+  Food(
+      name: "Croissant2",
+      smallImage: "assets/images/food3.png",
+      largeImage: "assets/images/pizza.png",
+      description: "description",
+      calories: 744,
+      servings: 4,
+      prepTime: 10,
+      cookTime: 10,
+      ingredient: [
+        "2 cups of all purpose flour",
+        "100 m processed cheese",
+        "100 ml tomatoes ketchup",
+        "4 mushroom",
+        "1 tomato",
+        "1/2 capsium (green pepper)",
+        "2 onions",
+        "1 teaspoo oregano",
+        "iteaspoon of chilli flakes",
+        "1/2 cup of mozzarella",
+        "i teaspoon bakig powder",
+        'i table spoon of dry yeast',
+        'i teaspoon sugar',
+        "water as required",
+      ],
+      preperationStep: [
+        "Step 1 : Prepare the pizza dough. Take a dough kneading plate and add all-purpose flour to it. Next, add salt and baking powder in it and sieve the flour once. Then, make a well in the centre and add 1 teaspoon of oil to it. On the other hand, take a little warm water and mix the yeast in it along with 1 teaspoon of sugar. Mix well for 10mins. The yeast will rise in the meantime. Once the yeast has risen, add it to the flour knead the dough nicely using some water. Keep this dough aside for 4-6 hours. Then knead the dough once again. Now, the pizza dough is ready. Read more"
+      ],
+      toServe: [],
+      fav: true),
+  Food(
+    name: "America Pancake2",
+    smallImage: "assets/images/food31.png",
+    largeImage: "assets/images/moi salad.png",
+    description: "description",
+    calories: 744,
+    servings: 4,
+    prepTime: 10,
+    cookTime: 10,
+    ingredient: [
+      "200g self-raising flour",
+      "25g melted butter, plus extra for cooking.",
+      "1 ½ tsp baking powder",
+      "200ml milk",
+      "1 tbsp golden caster sugar",
+      "vegetable oil, for cooking",
+      "3 large eggs",
+    ],
+    preperationStep: [
+      "STEP 1 : Mix 200g self-raising flour, 1 ½ tsp baking powder, 1 tbsp golden caster sugar and a pinch of salt together in a large bowl.",
+      "STEP 2 : Create a well in the centre with the back of your spoon then add 3 large eggs, 25g melted butter and 200ml milk.",
+      "STEP 3 : Whisk together either with a balloon whisk or electric hand beaters until smooth then pour into a jug. ",
+    ],
+    toServe: [
+      "maple syrup",
+      "toppings of your choice, such as cooked bacon",
+      "chocolate chips, blueberries or peanut butter and jam.",
+    ],
+  ),
+  Food(
+    name: "Lasagna2",
+    smallImage: "assets/images/food4.png",
+    largeImage: "assets/images/Italian Salad Image.png",
+    description: "description",
+    calories: 744,
+    servings: 4,
+    prepTime: 10,
+    cookTime: 10,
+    ingredient: [
+      "5 ounces mixed spring greens (or whatever greens you prefer)",
+      "half a small red onion, peeled and thinly sliced",
+      "2 cups cherry tomatoes",
+      "2 cups croutons, homemade or store-bought",
+      "1/2 cup freshly-grated Parmesan cheese, plus extra for topping",
+      "1/3 cup sliced pepperoncini peppers",
+    ],
+    preperationStep: [
+      "To Make The Vinaigrette: Whisk all ingredients together in a bowl (or shake together in a mason jar) until combined.  Taste and add additional sweetener if desired.  Use immediately or refrigerate in a sealed container for up to 3 days.",
+      "To Make The Salad: Combine all ingredients in a large salad bowl, drizzle evenly with the vinaigrette, and toss until evenly combined.  Serve sprinkled with extra Parmesan cheese and enjoy!"
+    ],
+    toServe: [],
+  ),
+  Food(
+    name: "Homemade Pizza3",
     smallImage: "assets/images/food.png",
     largeImage: "assets/images/pizza.png",
     description: "description",
@@ -235,7 +418,7 @@ List listOfProd = [
     toServe: [],
   ),
   Food(
-    name: "Italia Salad",
+    name: "Italia Salad3",
     smallImage: "assets/images/food1.png",
     largeImage: "assets/images/Italian Salad Image.png",
     description: "description",
@@ -258,7 +441,7 @@ List listOfProd = [
     toServe: [],
   ),
   Food(
-    name: "Fresh toast",
+    name: "Fresh toast3",
     smallImage: "assets/images/food2.png",
     largeImage: "assets/images/pizza.png",
     description: "description",
@@ -287,7 +470,7 @@ List listOfProd = [
     ],
   ),
   Food(
-    name: "Croissant",
+    name: "Croissant3",
     smallImage: "assets/images/food3.png",
     largeImage: "assets/images/pizza.png",
     description: "description",
@@ -317,7 +500,7 @@ List listOfProd = [
     toServe: [],
   ),
   Food(
-    name: "America Pancake",
+    name: "America Pancake3",
     smallImage: "assets/images/food31.png",
     largeImage: "assets/images/moi salad.png",
     description: "description",
@@ -346,7 +529,7 @@ List listOfProd = [
     ],
   ),
   Food(
-    name: "Lasagna",
+    name: "Lasagna3",
     smallImage: "assets/images/food4.png",
     largeImage: "assets/images/Italian Salad Image.png",
     description: "description",
@@ -369,7 +552,7 @@ List listOfProd = [
     toServe: [],
   ),
   Food(
-    name: "Homemade Pizza",
+    name: "Homemade Pizza4",
     smallImage: "assets/images/food.png",
     largeImage: "assets/images/pizza.png",
     description: "description",
@@ -377,6 +560,7 @@ List listOfProd = [
     servings: 4,
     prepTime: 10,
     cookTime: 10,
+    fav: true,
     ingredient: [
       "2 cups of all purpose flour",
       "100 m processed cheese",
@@ -399,7 +583,7 @@ List listOfProd = [
     toServe: [],
   ),
   Food(
-    name: "Italia Salad",
+    name: "Italia Salad4",
     smallImage: "assets/images/food1.png",
     largeImage: "assets/images/Italian Salad Image.png",
     description: "description",
@@ -422,7 +606,7 @@ List listOfProd = [
     toServe: [],
   ),
   Food(
-    name: "Fresh toast",
+    name: "Fresh toast4",
     smallImage: "assets/images/food2.png",
     largeImage: "assets/images/pizza.png",
     description: "description",
@@ -451,7 +635,7 @@ List listOfProd = [
     ],
   ),
   Food(
-    name: "Croissant",
+    name: "Croissant4",
     smallImage: "assets/images/food3.png",
     largeImage: "assets/images/pizza.png",
     description: "description",
@@ -481,7 +665,7 @@ List listOfProd = [
     toServe: [],
   ),
   Food(
-    name: "America Pancake",
+    name: "America Pancake4",
     smallImage: "assets/images/food31.png",
     largeImage: "assets/images/moi salad.png",
     description: "description",
@@ -510,190 +694,26 @@ List listOfProd = [
     ],
   ),
   Food(
-    name: "Lasagna",
-    smallImage: "assets/images/food4.png",
-    largeImage: "assets/images/Italian Salad Image.png",
-    description: "description",
-    calories: 744,
-    servings: 4,
-    prepTime: 10,
-    cookTime: 10,
-    ingredient: [
-      "5 ounces mixed spring greens (or whatever greens you prefer)",
-      "half a small red onion, peeled and thinly sliced",
-      "2 cups cherry tomatoes",
-      "2 cups croutons, homemade or store-bought",
-      "1/2 cup freshly-grated Parmesan cheese, plus extra for topping",
-      "1/3 cup sliced pepperoncini peppers",
-    ],
-    preperationStep: [
-      "To Make The Vinaigrette: Whisk all ingredients together in a bowl (or shake together in a mason jar) until combined.  Taste and add additional sweetener if desired.  Use immediately or refrigerate in a sealed container for up to 3 days.",
-      "To Make The Salad: Combine all ingredients in a large salad bowl, drizzle evenly with the vinaigrette, and toss until evenly combined.  Serve sprinkled with extra Parmesan cheese and enjoy!"
-    ],
-    toServe: [],
-  ),
-  Food(
-    name: "Homemade Pizza",
-    smallImage: "assets/images/food.png",
-    largeImage: "assets/images/pizza.png",
-    description: "description",
-    calories: 744,
-    servings: 4,
-    prepTime: 10,
-    cookTime: 10,
-    ingredient: [
-      "2 cups of all purpose flour",
-      "100 m processed cheese",
-      "100 ml tomatoes ketchup",
-      "4 mushroom",
-      "1 tomato",
-      "1/2 capsium (green pepper)",
-      "2 onions",
-      "1 teaspoo oregano",
-      "iteaspoon of chilli flakes",
-      "1/2 cup of mozzarella",
-      "i teaspoon bakig powder",
-      'i table spoon of dry yeast',
-      'i teaspoon sugar',
-      "water as required",
-    ],
-    preperationStep: [
-      "Step 1 : Prepare the pizza dough. Take a dough kneading plate and add all-purpose flour to it. Next, add salt and baking powder in it and sieve the flour once. Then, make a well in the centre and add 1 teaspoon of oil to it. On the other hand, take a little warm water and mix the yeast in it along with 1 teaspoon of sugar. Mix well for 10mins. The yeast will rise in the meantime. Once the yeast has risen, add it to the flour knead the dough nicely using some water. Keep this dough aside for 4-6 hours. Then knead the dough once again. Now, the pizza dough is ready. Read more"
-    ],
-    toServe: [],
-  ),
-  Food(
-    name: "Italia Salad",
-    smallImage: "assets/images/food1.png",
-    largeImage: "assets/images/Italian Salad Image.png",
-    description: "description",
-    calories: 744,
-    servings: 4,
-    prepTime: 10,
-    cookTime: 10,
-    ingredient: [
-      "5 ounces mixed spring greens (or whatever greens you prefer)",
-      "half a small red onion, peeled and thinly sliced",
-      "2 cups cherry tomatoes",
-      "2 cups croutons, homemade or store-bought",
-      "1/2 cup freshly-grated Parmesan cheese, plus extra for topping",
-      "1/3 cup sliced pepperoncini peppers",
-    ],
-    preperationStep: [
-      "To Make The Vinaigrette: Whisk all ingredients together in a bowl (or shake together in a mason jar) until combined.  Taste and add additional sweetener if desired.  Use immediately or refrigerate in a sealed container for up to 3 days.",
-      "To Make The Salad: Combine all ingredients in a large salad bowl, drizzle evenly with the vinaigrette, and toss until evenly combined.  Serve sprinkled with extra Parmesan cheese and enjoy!"
-    ],
-    toServe: [],
-  ),
-  Food(
-    name: "Fresh toast",
-    smallImage: "assets/images/food2.png",
-    largeImage: "assets/images/pizza.png",
-    description: "description",
-    calories: 744,
-    servings: 4,
-    prepTime: 10,
-    cookTime: 10,
-    ingredient: [
-      "200g self-raising flour",
-      "25g melted butter, plus extra for cooking.",
-      "1 ½ tsp baking powder",
-      "200ml milk",
-      "1 tbsp golden caster sugar",
-      "vegetable oil, for cooking",
-      "3 large eggs",
-    ],
-    preperationStep: [
-      "STEP 1 : Mix 200g self-raising flour, 1 ½ tsp baking powder, 1 tbsp golden caster sugar and a pinch of salt together in a large bowl.",
-      "STEP 2 : Create a well in the centre with the back of your spoon then add 3 large eggs, 25g melted butter and 200ml milk.",
-      "STEP 3 : Whisk together either with a balloon whisk or electric hand beaters until smooth then pour into a jug. ",
-    ],
-    toServe: [
-      "maple syrup",
-      "toppings of your choice, such as cooked bacon",
-      "chocolate chips, blueberries or peanut butter and jam.",
-    ],
-  ),
-  Food(
-    name: "Croissant",
-    smallImage: "assets/images/food3.png",
-    largeImage: "assets/images/pizza.png",
-    description: "description",
-    calories: 744,
-    servings: 4,
-    prepTime: 10,
-    cookTime: 10,
-    ingredient: [
-      "2 cups of all purpose flour",
-      "100 m processed cheese",
-      "100 ml tomatoes ketchup",
-      "4 mushroom",
-      "1 tomato",
-      "1/2 capsium (green pepper)",
-      "2 onions",
-      "1 teaspoo oregano",
-      "iteaspoon of chilli flakes",
-      "1/2 cup of mozzarella",
-      "i teaspoon bakig powder",
-      'i table spoon of dry yeast',
-      'i teaspoon sugar',
-      "water as required",
-    ],
-    preperationStep: [
-      "Step 1 : Prepare the pizza dough. Take a dough kneading plate and add all-purpose flour to it. Next, add salt and baking powder in it and sieve the flour once. Then, make a well in the centre and add 1 teaspoon of oil to it. On the other hand, take a little warm water and mix the yeast in it along with 1 teaspoon of sugar. Mix well for 10mins. The yeast will rise in the meantime. Once the yeast has risen, add it to the flour knead the dough nicely using some water. Keep this dough aside for 4-6 hours. Then knead the dough once again. Now, the pizza dough is ready. Read more"
-    ],
-    toServe: [],
-  ),
-  Food(
-    name: "America Pancake",
-    smallImage: "assets/images/food31.png",
-    largeImage: "assets/images/moi salad.png",
-    description: "description",
-    calories: 744,
-    servings: 4,
-    prepTime: 10,
-    cookTime: 10,
-    ingredient: [
-      "200g self-raising flour",
-      "25g melted butter, plus extra for cooking.",
-      "1 ½ tsp baking powder",
-      "200ml milk",
-      "1 tbsp golden caster sugar",
-      "vegetable oil, for cooking",
-      "3 large eggs",
-    ],
-    preperationStep: [
-      "STEP 1 : Mix 200g self-raising flour, 1 ½ tsp baking powder, 1 tbsp golden caster sugar and a pinch of salt together in a large bowl.",
-      "STEP 2 : Create a well in the centre with the back of your spoon then add 3 large eggs, 25g melted butter and 200ml milk.",
-      "STEP 3 : Whisk together either with a balloon whisk or electric hand beaters until smooth then pour into a jug. ",
-    ],
-    toServe: [
-      "maple syrup",
-      "toppings of your choice, such as cooked bacon",
-      "chocolate chips, blueberries or peanut butter and jam.",
-    ],
-  ),
-  Food(
-    name: "Lasagna",
-    smallImage: "assets/images/food4.png",
-    largeImage: "assets/images/Italian Salad Image.png",
-    description: "description",
-    calories: 744,
-    servings: 4,
-    prepTime: 10,
-    cookTime: 10,
-    ingredient: [
-      "5 ounces mixed spring greens (or whatever greens you prefer)",
-      "half a small red onion, peeled and thinly sliced",
-      "2 cups cherry tomatoes",
-      "2 cups croutons, homemade or store-bought",
-      "1/2 cup freshly-grated Parmesan cheese, plus extra for topping",
-      "1/3 cup sliced pepperoncini peppers",
-    ],
-    preperationStep: [
-      "To Make The Vinaigrette: Whisk all ingredients together in a bowl (or shake together in a mason jar) until combined.  Taste and add additional sweetener if desired.  Use immediately or refrigerate in a sealed container for up to 3 days.",
-      "To Make The Salad: Combine all ingredients in a large salad bowl, drizzle evenly with the vinaigrette, and toss until evenly combined.  Serve sprinkled with extra Parmesan cheese and enjoy!"
-    ],
-    toServe: [],
-  ),
+      name: "Lasagna4",
+      smallImage: "assets/images/food4.png",
+      largeImage: "assets/images/Italian Salad Image.png",
+      description: "description",
+      calories: 744,
+      servings: 4,
+      prepTime: 10,
+      cookTime: 10,
+      ingredient: [
+        "5 ounces mixed spring greens (or whatever greens you prefer)",
+        "half a small red onion, peeled and thinly sliced",
+        "2 cups cherry tomatoes",
+        "2 cups croutons, homemade or store-bought",
+        "1/2 cup freshly-grated Parmesan cheese, plus extra for topping",
+        "1/3 cup sliced pepperoncini peppers",
+      ],
+      preperationStep: [
+        "To Make The Vinaigrette: Whisk all ingredients together in a bowl (or shake together in a mason jar) until combined.  Taste and add additional sweetener if desired.  Use immediately or refrigerate in a sealed container for up to 3 days.",
+        "To Make The Salad: Combine all ingredients in a large salad bowl, drizzle evenly with the vinaigrette, and toss until evenly combined.  Serve sprinkled with extra Parmesan cheese and enjoy!"
+      ],
+      toServe: [],
+      fav: true),
 ];

@@ -1,6 +1,6 @@
 import 'package:cooking_recipe_app/constants/constants.dart';
-import 'package:cooking_recipe_app/models/responsive_size.dart';
-import 'package:cooking_recipe_app/screens/home/recipes_varieties.dart';
+import 'package:cooking_recipe_app/utils/responsive_size.dart';
+import 'package:cooking_recipe_app/screens/home/recipes_screen.dart';
 import 'package:cooking_recipe_app/screens/home/start_learning.dart';
 import 'package:cooking_recipe_app/screens/profile/profile_page.dart';
 import 'package:flutter/material.dart';
@@ -18,11 +18,15 @@ class RecipeHomeNav extends StatefulWidget {
 
 class _RecipeHomeNavState extends State<RecipeHomeNav> {
   int currentSelected = 0;
-  List list = const [
-    StartLearning(),
-    RecipesVarieties(),
-    RecipesVarieties(),
-    ProfilePage(),
+  List list = [
+    const StartLearning(),
+    const RecipesScreen(
+      listType: ListType.normal,
+    ),
+    const RecipesScreen(
+      listType: ListType.filtered,
+    ),
+    const ProfilePage(),
   ];
 
   @override

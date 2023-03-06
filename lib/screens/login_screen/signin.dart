@@ -3,12 +3,14 @@
 import 'dart:developer';
 
 import 'package:cooking_recipe_app/constants/constants.dart';
-import 'package:cooking_recipe_app/models/responsive_size.dart';
-import 'package:cooking_recipe_app/screens/home/start_learning.dart';
-import 'package:cooking_recipe_app/screens/login_screen/component/components.dart';
 import 'package:cooking_recipe_app/screens/login_screen/signup.dart';
+import 'package:cooking_recipe_app/utils/responsive_size.dart';
+import 'package:cooking_recipe_app/screens/home/home_nav.dart';
 import 'package:cooking_recipe_app/services/auth_services.dart';
 import 'package:flutter/material.dart';
+
+import '../../utils/logic.dart';
+import 'component/components.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -135,7 +137,7 @@ class _BodyState extends State<Body> {
                       log(user?.toString() ?? "not user");
                       if (user != null) {
                         if (mounted) {
-                          Navigator.of(context).pushNamed(StartLearning.route);
+                          Navigator.of(context).pushNamed(RecipeHomeNav.route);
                         }
                       }
                     },

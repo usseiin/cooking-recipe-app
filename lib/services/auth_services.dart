@@ -10,8 +10,8 @@ class AuthService {
     return Firebase.initializeApp();
   }
 
-  User? currentUser() {
-    return _auth.currentUser;
+  AuthUser? currentUser() {
+    return AuthUser.fromFirebase(_auth.currentUser!);
   }
 
   Future sendEmailVerification({required String email}) async {
@@ -39,8 +39,19 @@ class AuthService {
     }
   }
 
-  Future createAccountWithEmailAndPassword({
+  Future<void> addUsername(String name) async {
+    try {
+      if (currentUser() != null) {
+        _auth.currentUser!.updateDisplayName(name);
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<AuthUser> createAccountWithEmailAndPassword({
     required String email,
+    required String username,
     required String password,
   }) async {
     try {
@@ -50,11 +61,14 @@ class AuthService {
         password: password,
       );
       User? user = userCredential.user;
-      return user!.uid;
+      user!.updateDisplayName(username);
+      return AuthUser.fromFirebase(user);
     } on FirebaseAuthException catch (e) {
       log(e.code);
+      rethrow;
     } catch (e) {
       log(e.toString());
+      rethrow;
     }
   }
 
@@ -74,6 +88,10 @@ class AuthService {
 }
 
 class AuthUser {
-  String userId;
-  AuthUser({required this.userId});
+  final String userId;
+  final String username;
+  const AuthUser({required this.username, required this.userId});
+
+  factory AuthUser.fromFirebase(User user) =>
+      AuthUser(userId: user.uid, username: user.displayName ?? "Anonymous");
 }

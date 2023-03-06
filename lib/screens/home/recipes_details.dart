@@ -1,10 +1,13 @@
 import 'package:cooking_recipe_app/constants/constants.dart';
 import 'package:cooking_recipe_app/models/model.dart';
-import 'package:cooking_recipe_app/models/responsive_size.dart';
+import 'package:cooking_recipe_app/utils/responsive_size.dart';
 import 'package:cooking_recipe_app/screens/home/components/components.dart';
 import "package:flutter/material.dart";
 
+import '../../utils/logic.dart';
+
 class RecipesDetailScreen extends StatelessWidget {
+  static const String route = "/recipe_detail_screen";
   final Food recipe;
   const RecipesDetailScreen({
     Key? key,
@@ -42,7 +45,7 @@ class _BodyState extends State<Body> {
     return Column(
       children: [
         Hero(
-          tag: "${listOfProd.indexOf(widget.recipe)}",
+          tag: "${foods.indexOf(widget.recipe)}",
           child: SizedBox(
             width: double.infinity,
             child: Image.asset(
@@ -82,7 +85,8 @@ class _BodyState extends State<Body> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(
-                              right: getProportionalScreenWidth(5)),
+                            right: getProportionalScreenWidth(5),
+                          ),
                           child: const Icon(
                             Icons.circle,
                             size: 15,

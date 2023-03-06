@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../constants/constants.dart';
-import '../models/responsive_size.dart';
+import '../utils/logic.dart';
+import '../utils/responsive_size.dart';
 import '../services/auth_services.dart';
 import 'login_screen/component/components.dart';
 

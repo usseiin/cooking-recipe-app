@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cooking_recipe_app/firebase_options.dart';
 import 'package:cooking_recipe_app/route.dart';
 import 'package:cooking_recipe_app/screens/home/home_nav.dart';
@@ -8,7 +6,7 @@ import 'package:cooking_recipe_app/services/auth_services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
@@ -17,7 +15,6 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final values = List.generate(30, (index) => Random().nextDouble() * 100);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const Home(),
@@ -44,8 +41,10 @@ class Home extends StatelessWidget {
             }
             return const LoginSocial();
           default:
-            return const Center(
-              child: CircularProgressIndicator(),
+            return const Material(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
             );
         }
       },

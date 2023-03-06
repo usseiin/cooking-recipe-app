@@ -1,9 +1,11 @@
 import 'package:cooking_recipe_app/constants/constants.dart';
-import 'package:cooking_recipe_app/models/responsive_size.dart';
-import 'package:cooking_recipe_app/screens/login_screen/component/components.dart';
-import 'package:cooking_recipe_app/screens/login_screen/signin.dart';
-import 'package:cooking_recipe_app/screens/login_screen/signup.dart';
+import 'package:cooking_recipe_app/utils/responsive_size.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/logic.dart';
+import 'login_screen/component/components.dart';
+import 'login_screen/signin.dart';
+import 'login_screen/signup.dart';
 
 class LoginSocial extends StatelessWidget {
   const LoginSocial({Key? key}) : super(key: key);
